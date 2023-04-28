@@ -40,7 +40,7 @@ public class WildFrostCardPackMod : MelonMod
             }
             {
                 var data = CardAdder.VanillaStatusEffects.WhenDestroyedApplyFrenzyToRandomAlly.StatusEffectData().Instantiate().Cast<StatusEffectApplyXWhenDestroyed>();
-                data.name = "MiyasCardPack.WhenDestroyedGive3AttackToRandomAlly";
+                data.name = "MiyasCardPack.WhenDestroyedGiveAttackToRandomAlly";
                 data.effectToApply = CardAdder.VanillaStatusEffects.IncreaseAttack.StatusEffectData();
                 data.textInsert="<{a}><keyword=attack>";
                 data.RegisterStatusEffectInApi();
