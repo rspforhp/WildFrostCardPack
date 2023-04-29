@@ -1,5 +1,7 @@
 ﻿using HarmonyLib;
 using Il2Cpp;
+using Il2CppInterop.Runtime.Injection;
+using Il2CppMono;
 using Il2CppSystem.Collections;
 using Il2CppSystem.IO;
 using Il2CppSystem.Reflection;
@@ -14,7 +16,9 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UniverseLib;
 using WildFrostCardPack;
 using WildfrostModMiya;
+using ClassInjector = Il2CppInterop.Runtime.Injection.ClassInjector;
 using Color = System.Drawing.Color;
+using Console = System.Console;
 using IEnumerator = System.Collections.IEnumerator;
 using Object = Il2CppSystem.Object;
 
@@ -26,34 +30,53 @@ namespace WildFrostCardPack;
 
 public class WildFrostCardPackMod : MelonMod
 {
+    internal static WildFrostCardPackMod Instance;
+    
+    public static T CreateStatusEffectData<T>(string modName, string cardName) where T : StatusEffectData
+    {
+        T instance = ScriptableObject.CreateInstance(Il2CppType.From(typeof(T))).Cast<T>();
+        instance.textKey = new LocalizedString();
+        instance.name = cardName.StartsWith(modName) ? cardName : modName + "." + cardName;
+        if (modName == "")
+            instance.name = cardName;
+        return instance;
+    }
     public override void OnInitializeMelon()
     {
+        Instance = this;
         StatusEffectAdder.OnAskForAddingStatusEffects+= delegate(int i)
         {
-            //SpiceEffectWorkAround
             {
-                var data = CardAdder.VanillaStatusEffects.OnCardPlayedApplyBlockToRandomUnit.StatusEffectData().Instantiate().Cast<StatusEffectApplyXOnCardPlayed>();
-                data.name = "MiyasCardPack.OnCardPlayedAppySpiceToRandomUnit";
+                var data = StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXOnCardPlayed>("MiyasCardPack","OnCardPlayedAppySpiceToRandomUnit" );
                 data.effectToApply = CardAdder.VanillaStatusEffects.Spice.StatusEffectData();
+                data.applyToFlags = StatusEffectApplyX.ApplyToFlags.RandomUnit;
+                data.desc = "Apply <{0}><keyword=spice> to a random ally or enemy";
+                data = data.SetText("Apply {0} to a random ally or enemy");
                 data.textInsert="<{a}><keyword=spice>";
                 data.RegisterStatusEffectInApi();
             }
             {
-                var data = CardAdder.VanillaStatusEffects.WhenDestroyedApplyFrenzyToRandomAlly.StatusEffectData().Instantiate().Cast<StatusEffectApplyXWhenDestroyed>();
-                data.name = "MiyasCardPack.WhenDestroyedGiveAttackToRandomAlly";
+                var data =  StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXWhenDestroyed>("MiyasCardPack","WhenDestroyedGiveAttackToRandomAlly" );
                 data.effectToApply = CardAdder.VanillaStatusEffects.IncreaseAttack.StatusEffectData();
+                data.applyToFlags = StatusEffectApplyX.ApplyToFlags.RandomAlly;
+                data.desc = "When destroyed <{0}><keyword=attack> to a random ally when destroyed";
+                data = data.SetText("When destroyed {0} to a random ally when destroyed");
                 data.textInsert="<{a}><keyword=attack>";
                 data.RegisterStatusEffectInApi();
 
             }
             {
-                var data = CardAdder.VanillaStatusEffects.OnKillApplyAttackToSelf.StatusEffectData().Instantiate().Cast<StatusEffectApplyXOnKill>();
-                data.name = "MiyasCardPack.OnKillApplySpiceToCardsInHand";
+                var data =  StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXOnKill>("MiyasCardPack","OnKillApplySpiceToCardsInHand" );
                 data.effectToApply = CardAdder.VanillaStatusEffects.Spice.StatusEffectData();
+                data.desc = "On kill <{0}><keyword=spice> to cards in hand";
+                data = data.SetText("On kill {0}  to cards in hand");
                 data.textInsert="<{a}><keyword=spice>";
                 data.applyToFlags = StatusEffectApplyX.ApplyToFlags.Hand;
                 data.RegisterStatusEffectInApi();
 
+            }
+            {
+           
             }
         };
         CardAdder.OnAskForAddingCards += delegate(int i)
@@ -76,7 +99,7 @@ public class WildFrostCardPackMod : MelonMod
                 .SetSprites("MiyasCardPack\\Tootie", "MiyasCardPack\\TootieBackground")
                 .SetIsUnit()
                 .SetStats(1, 1, 3)
-                .SetStartWithEffects("MiyasCardPack.WhenDestroyedGiveAttackToCardsInHand".StatusEffectStack(3))
+                .SetStartWithEffects("MiyasCardPack.WhenDestroyedGiveAttackToRandomAlly".StatusEffectStack(3))
                 .AddToPool(CardAdder.VanillaRewardPools.GeneralUnitPool)
                 .RegisterCardInApi()
                 ;
@@ -87,6 +110,18 @@ public class WildFrostCardPackMod : MelonMod
                 .SetIsUnit()
                 .SetStats(5, 4, 6)
                 .SetStartWithEffects("MiyasCardPack.OnKillApplySpiceToCardsInHand".StatusEffectStack(1))
+                .AddToPool(CardAdder.VanillaRewardPools.GeneralUnitPool)
+                .RegisterCardInApi()
+                ;
+            CardAdder.CreateCardData("MiyasCardPack", "BlastChill")
+                .SetTitle("Blast Chill")
+                .SetSprites("MiyasCardPack\\Tootie", "MiyasCardPack\\TootieBackground")
+                .SetIsItem()
+                .SetDamage(0)
+                .SetAttackEffects(CardAdder.VanillaStatusEffects.Frost.StatusEffectStack(6))
+                .SetItemUses(3)
+                .SetText("Can be used 3 times before consuming.")
+                .SetTraits(CardAdder.VanillaTraits.Consume.TraitStack(1))
                 .AddToPool(CardAdder.VanillaRewardPools.GeneralUnitPool)
                 .RegisterCardInApi()
                 ;
