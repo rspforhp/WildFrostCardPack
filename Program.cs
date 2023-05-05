@@ -14,6 +14,7 @@ using UnityEngine.Localization;
 using UnityEngine.Pool;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UniverseLib;
+using UniverseLib.Runtime.Il2Cpp;
 using WildFrostCardPack;
 using WildfrostModMiya;
 using ClassInjector = Il2CppInterop.Runtime.Injection.ClassInjector;
@@ -31,21 +32,14 @@ namespace WildFrostCardPack;
 public class WildFrostCardPackMod : MelonMod
 {
     internal static WildFrostCardPackMod Instance;
-    
-    public static T CreateStatusEffectData<T>(string modName, string cardName) where T : StatusEffectData
-    {
-        T instance = ScriptableObject.CreateInstance(Il2CppType.From(typeof(T))).Cast<T>();
-        instance.textKey = new LocalizedString();
-        instance.name = cardName.StartsWith(modName) ? cardName : modName + "." + cardName;
-        if (modName == "")
-            instance.name = cardName;
-        return instance;
-    }
+
+
     public override void OnInitializeMelon()
     {
         Instance = this;
-        StatusEffectAdder.OnAskForAddingStatusEffects+= delegate(int i)
+        StatusEffectAdder.OnAskForAddingStatusEffects += delegate(int i)
         {
+            /* OLD STUFF
             {
                 var data = StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXOnCardPlayed>("MiyasCardPack","OnCardPlayedAppySpiceToRandomUnit" );
                 data.effectToApply = CardAdder.VanillaStatusEffects.Spice.StatusEffectData();
@@ -76,59 +70,110 @@ public class WildFrostCardPackMod : MelonMod
 
             }
             {
-           
+                var data =StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXWhenHit>("MiyasCardPack","TestAgain" );
+                data.desc = "log stuff when hit";
+                data = data.SetText( "log stuff when hit");
+                data.RegisterStatusEffectInApi();
+    
+          
+
             }
+            */
+            StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXOnKill>("MiyasCardPack", "JolitoEffect").ModifyFields(delegate(StatusEffectApplyXOnKill kill)
+                {
+                    kill.desc = "On kill count down <keyword=counter> of allies by <{0}>";
+                    kill = kill.SetText("On kill count down <keyword=counter> of allies by {0}");
+                    kill.textInsert="<{a}>";
+                    kill.effectToApply = CardAdder.VanillaStatusEffects.ReduceCounter.StatusEffectData();
+                    kill.applyToFlags = StatusEffectApplyX.ApplyToFlags.Allies;
+                    return kill;
+                }).RegisterStatusEffectInApi();
         };
         CardAdder.OnAskForAddingCards += delegate(int i)
         {
-            
-         
-            CardAdder.CreateCardData("MiyasCardPack", "SpiceDice")
-                .SetTitle("Spice dice")
-                .SetSprites("MiyasCardPack\\SpiceDice", "MiyasCardPack\\SpiceDiceBackground")
-                .SetIsItem()
-                .SetTargetMode(CardAdder.VanillaTargetModes.TargetModeAll)
-                .SetStartWithEffects("MiyasCardPack.OnCardPlayedAppySpiceToRandomUnit".StatusEffectStack(5), CardAdder.VanillaStatusEffects.MultiHit.StatusEffectStack(1))
-                .AddToPool(CardAdder.VanillaRewardPools.GeneralItemPool)
-                .RegisterCardInApi()
-                ;
+            /* OLD STUFF 
+CardAdder.CreateCardData("MiyasCardPack", "TestCardAgain")
+.SetTitle("Test")
+.SetSprites("MiyasCardPack\\SpiceDice", "MiyasCardPack\\SpiceDiceBackground")
+.SetIsUnit()
+.SetTargetMode(CardAdder.VanillaTargetModes.TargetModeAll)
+.SetStartWithEffects("MiyasCardPack.TestAgain".StatusEffectStack(1))
+.AddToPool(CardAdder.VanillaRewardPools.GeneralUnitPool)
+.SetStats(10,1,1)
+.AddToPets()
+.RegisterCardInApi()
+;
 
 
-            CardAdder.CreateCardData("MiyasCardPack", "Tootie")
-                .SetTitle("Tootie")
-                .SetSprites("MiyasCardPack\\Tootie", "MiyasCardPack\\TootieBackground")
+CardAdder.CreateCardData("MiyasCardPack", "SpiceDice")
+.SetTitle("Spice dice")
+.SetSprites("MiyasCardPack\\SpiceDice", "MiyasCardPack\\SpiceDiceBackground")
+.SetIsItem()
+.SetTargetMode(CardAdder.VanillaTargetModes.TargetModeAll)
+.SetStartWithEffects("MiyasCardPack.OnCardPlayedAppySpiceToRandomUnit".StatusEffectStack(5), CardAdder.VanillaStatusEffects.MultiHit.StatusEffectStack(1))
+.AddToPool(CardAdder.VanillaRewardPools.GeneralItemPool)
+.RegisterCardInApi()
+;
+
+
+CardAdder.CreateCardData("MiyasCardPack", "Tootie")
+.SetTitle("Tootie")
+.SetSprites("MiyasCardPack\\Tootie", "MiyasCardPack\\TootieBackground")
+.SetIsUnit()
+.SetStats(1, 1, 3)
+.SetStartWithEffects("MiyasCardPack.WhenDestroyedGiveAttackToRandomAlly".StatusEffectStack(3))
+.AddToPool(CardAdder.VanillaRewardPools.GeneralUnitPool)
+.RegisterCardInApi()
+;
+
+CardAdder.CreateCardData("MiyasCardPack", "Diska")
+.SetTitle("Diska")
+.SetSprites("MiyasCardPack\\Tootie", "MiyasCardPack\\TootieBackground")
+.SetIsUnit()
+.SetStats(5, 4, 6)
+.SetStartWithEffects("MiyasCardPack.OnKillApplySpiceToCardsInHand".StatusEffectStack(1))
+.AddToPool(CardAdder.VanillaRewardPools.GeneralUnitPool)
+.RegisterCardInApi()
+;
+CardAdder.CreateCardData("MiyasCardPack", "BlastChill")
+.SetTitle("Blast Chill")
+.SetSprites("MiyasCardPack\\Tootie", "MiyasCardPack\\TootieBackground")
+.SetIsItem()
+.SetDamage(0)
+.SetAttackEffects(CardAdder.VanillaStatusEffects.Frost.StatusEffectStack(6))
+.SetItemUses(3)
+.SetText("Can be used 3 times before consuming.")
+.SetTraits(CardAdder.VanillaTraits.Consume.TraitStack(1))
+.AddToPool(CardAdder.VanillaRewardPools.GeneralItemPool)
+.RegisterCardInApi()
+;
+CardAdder.CreateCardData("MiyasCardPack", "ChillyBot")
+.SetTitle("Chilly bot")
+.SetSprites("MiyasCardPack\\Tootie", "MiyasCardPack\\TootieBackground")
+.SetIsUnit()
+.SetCardType(CardAdder.VanillaCardTypes.Clunker)
+.SetStats(null,null,0)
+.SetStartWithEffects(CardAdder.VanillaStatusEffects.Scrap.StatusEffectStack(1), CardAdder.VanillaStatusEffects.TriggerWhenAllyInRowAttacks.StatusEffectStack(1))
+.SetAttackEffects(CardAdder.VanillaStatusEffects.Snow.StatusEffectStack(1))
+.AddToPool(CardAdder.VanillaRewardPools.GeneralUnitPool)
+.RegisterCardInApi()
+;
+CardAdder.CreateCardData("MiyasCardPack", "Panacea")
+.SetTitle("Panacea")
+.SetSprites("MiyasCardPack\\Tootie", "MiyasCardPack\\TootieBackground")
+.SetIsItem()
+.SetAttackEffects(CardAdder.VanillaStatusEffects.Cleanse.StatusEffectStack(1))
+.SetText("Remove all effects from a card")
+.SetCanPlay(CardAdder.CanPlay.CanPlayOnBoard| CardAdder.CanPlay.CanPlayOnEnemy | CardAdder.CanPlay.CanPlayOnFriendly | CardAdder.CanPlay.CanPlayOnHand)
+.AddToPool(CardAdder.VanillaRewardPools.GeneralItemPool)
+.RegisterCardInApi()
+;
+*/
+
+            CardAdder.CreateCardData("MiyasCardPack", "jolito").SetStats(6,2,5)
                 .SetIsUnit()
-                .SetStats(1, 1, 3)
-                .SetStartWithEffects("MiyasCardPack.WhenDestroyedGiveAttackToRandomAlly".StatusEffectStack(3))
-                .AddToPool(CardAdder.VanillaRewardPools.GeneralUnitPool)
-                .RegisterCardInApi()
-                ;
-
-            CardAdder.CreateCardData("MiyasCardPack", "Diska")
-                .SetTitle("Diska")
-                .SetSprites("MiyasCardPack\\Tootie", "MiyasCardPack\\TootieBackground")
-                .SetIsUnit()
-                .SetStats(5, 4, 6)
-                .SetStartWithEffects("MiyasCardPack.OnKillApplySpiceToCardsInHand".StatusEffectStack(1))
-                .AddToPool(CardAdder.VanillaRewardPools.GeneralUnitPool)
-                .RegisterCardInApi()
-                ;
-            CardAdder.CreateCardData("MiyasCardPack", "BlastChill")
-                .SetTitle("Blast Chill")
-                .SetSprites("MiyasCardPack\\Tootie", "MiyasCardPack\\TootieBackground")
-                .SetIsItem()
-                .SetDamage(0)
-                .SetAttackEffects(CardAdder.VanillaStatusEffects.Frost.StatusEffectStack(6))
-                .SetItemUses(3)
-                .SetText("Can be used 3 times before consuming.")
-                .SetTraits(CardAdder.VanillaTraits.Consume.TraitStack(1))
-                .AddToPool(CardAdder.VanillaRewardPools.GeneralUnitPool)
-                .RegisterCardInApi()
-                ;
-
-            /*
-             how about a new clunker 1/0 Apply 1 Snow Trigger against target when an ally in your row attacks
-             */
+                .SetStartWithEffects("MiyasCardPack.JolitoEffect".StatusEffectStack(2)).SetSprites(CardAdder.LoadSpriteFromCardPortraits("MiyasCardPack\\Jolito"),CardAdder.LoadSpriteFromCardPortraits("MiyasCardPack\\TootieBackground"))
+                .RegisterCardInApi();
         };
         base.OnInitializeMelon();
     }
