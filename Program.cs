@@ -1,42 +1,40 @@
-﻿using HarmonyLib;
-using Il2Cpp;
-using Il2CppInterop.Runtime.Injection;
-using Il2CppMono;
-using Il2CppSystem.Collections;
-using Il2CppSystem.IO;
-using Il2CppSystem.Reflection;
-using MelonLoader;
-using UnhollowerBaseLib;
-using UnhollowerRuntimeLib;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.Localization;
-using UnityEngine.Pool;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UniverseLib;
-using UniverseLib.Runtime.Il2Cpp;
-using WildFrostCardPack;
+﻿using BepInEx;
+using BepInEx.Unity.IL2CPP;
 using WildfrostModMiya;
-using ClassInjector = Il2CppInterop.Runtime.Injection.ClassInjector;
-using Color = System.Drawing.Color;
-using Console = System.Console;
-using IEnumerator = System.Collections.IEnumerator;
-using Object = Il2CppSystem.Object;
-
-[assembly: MelonAdditionalDependencies("WildfrostModMiya")]
-[assembly: MelonInfo(typeof(WildFrostCardPackMod), "WildFrost CardPack", "1", "Kopie_Miya")]
-[assembly: MelonGame("Deadpan Games", "Wildfrost")]
 
 namespace WildFrostCardPack;
-
-public class WildFrostCardPackMod : MelonMod
+[BepInPlugin("WildFrost.Miya.AlternateCardPack", "AlternateCardPack", "0.1.0.0")]
+public class WildFrostCardPackMod : BasePlugin
 {
     internal static WildFrostCardPackMod Instance;
 
-
-    public override void OnInitializeMelon()
+    private static void AddTaintedCards()
     {
-        Instance = this;
+        HandleTaintedCard("Blunky", (originalData, createdData) => createdData.SetStats(1,1,2).SetStartWithEffects(CardAdder.VanillaStatusEffects.Block.StatusEffectStack(4)).SetTraits(CardAdder.VanillaTraits.Pigheaded.TraitStack(1)));
+        HandleTaintedCard("Snoffel", (originalData, createdData) => createdData.SetStats(4,1,5).SetStartWithEffects().SetTraits().SetAttackEffects(CardAdder.VanillaStatusEffects.Snow.StatusEffectStack(1)).SetTargetMode(CardAdder.VanillaTargetModes.TargetModeAll).SetText("Hits all foes"));
+        HandleTaintedCard("BigBerry", (originalData, createdData) => createdData.SetStats(5,0,5).SetStartWithEffects(CardAdder.VanillaStatusEffects.DamageEqualToHealth.StatusEffectStack(1)).SetTraits());
+       // This is laggy, dont wanna deal with the bugs it causes
+       // HandleTaintedCard("Jagzag", (data, cardData) => cardData.SetStats(8, null, 2).SetStartWithEffects(CardAdder.VanillaStatusEffects.Teeth.StatusEffectStack(1)).SetAttackEffects("TaintedCards.GainTeeth".StatusEffectStack(1)).SetTraits());
+        HandleTaintedCard("Flash", (originalData, createdData) => createdData.SetStats(8,0,4).SetAttackEffects(CardAdder.VanillaStatusEffects.Overload.StatusEffectStack(1)).SetTargetMode(CardAdder.VanillaTargetModes.TargetModeAll).SetText("Hits all foes"));
+        HandleTaintedCard("Shelly", (originalData, createdData) => createdData.SetStats(4,6,4).SetStartWithEffects().SetAttackEffects(CardAdder.VanillaStatusEffects.Shell.StatusEffectStack(5)));
+
+    }
+
+    private static void HandleTaintedCard(string name, Func<CardData, CardData, CardData> extraAction)
+    {
+        var originalCardData = AddressableLoader.groups["CardData"].lookup[name].Cast<CardData>();
+        var newCardData =originalCardData.InstantiateKeepName();
+        newCardData = extraAction(originalCardData, newCardData);
+        AddressableLoader.groups["CardData"].lookup[name] = newCardData;
+        AddressableLoader.groups["CardData"].list.Remove(originalCardData);
+        AddressableLoader.groups["CardData"].list.Add(newCardData);
+    }
+
+
+
+    public override void Load()
+    {
+                Instance = this;
         StatusEffectAdder.OnAskForAddingStatusEffects += delegate(int i)
         {
             /* OLD STUFF
@@ -79,6 +77,7 @@ public class WildFrostCardPackMod : MelonMod
 
             }
             */
+            /* Jolito effect example
             StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXOnKill>("MiyasCardPack", "JolitoEffect").ModifyFields(delegate(StatusEffectApplyXOnKill kill)
                 {
                     kill.desc = "On kill count down <keyword=counter> of allies by <{0}>";
@@ -88,6 +87,19 @@ public class WildFrostCardPackMod : MelonMod
                     kill.applyToFlags = StatusEffectApplyX.ApplyToFlags.Allies;
                     return kill;
                 }).RegisterStatusEffectInApi();
+            */
+            
+             StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXInstant>("TaintedCards", "GainTeeth").ModifyFields(
+                delegate(StatusEffectApplyX x)
+                {
+                    x.desc = "Apply <{0}> <keyword=teeth> to self";
+                    x = x.SetText("Apply {0} <keyword=teeth> to self");
+                    x.textInsert="<{a}>";
+                    x.applyToFlags = StatusEffectApplyX.ApplyToFlags.Self;
+                    x.effectToApply = CardAdder.VanillaStatusEffects.Teeth.StatusEffectData();
+                    return x;
+                }).RegisterStatusEffectInApi();
+            
         };
         CardAdder.OnAskForAddingCards += delegate(int i)
         {
@@ -169,12 +181,13 @@ CardAdder.CreateCardData("MiyasCardPack", "Panacea")
 .RegisterCardInApi()
 ;
 */
-
+            /* Jolito card example
             CardAdder.CreateCardData("MiyasCardPack", "jolito").SetStats(6,2,5)
                 .SetIsUnit()
                 .SetStartWithEffects("MiyasCardPack.JolitoEffect".StatusEffectStack(2)).SetSprites(CardAdder.LoadSpriteFromCardPortraits("MiyasCardPack\\Jolito"),CardAdder.LoadSpriteFromCardPortraits("MiyasCardPack\\TootieBackground"))
                 .RegisterCardInApi();
+            */
+            AddTaintedCards();
         };
-        base.OnInitializeMelon();
     }
 }
