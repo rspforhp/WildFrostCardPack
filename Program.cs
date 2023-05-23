@@ -4,6 +4,7 @@ using WildfrostModMiya;
 
 namespace WildFrostCardPack;
 [BepInPlugin("WildFrost.Miya.AlternateCardPack", "AlternateCardPack", "0.1.0.0")]
+[BepInDependency("WildFrost.Miya.WildfrostAPI")]
 public class WildFrostCardPackMod : BasePlugin
 {
     internal static WildFrostCardPackMod Instance;
