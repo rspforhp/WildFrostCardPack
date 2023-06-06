@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a729024-73a7-4453-a6b8-ccc91011d6cd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/ref/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/WildFrostCardPack.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/refint/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/refint/WildFrostCardPack.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WildFrostCardPack/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WildFrostCardPack/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,21 +14,21 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0da76d33e64049b195560a54ae7564c613a00/04/546a7d94/CardAdder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/02/43483fe1/Component.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/19/91f4f2ff/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/29/9514de5d/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/02/43483fe1/Component.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/19/91f4f2ff/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/29/9514de5d/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/78/412ffc54/ScriptableObject.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/e4/05e075a9/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/e4/05e075a9/Behaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6f5e4ff5bbd94258ab8bd773251f8e6c30800/d8/f6352feb/ClassInjector.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/56/823db498/StatusEffectIncreaseAttackWhileDamaged.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/56/823db498/StatusEffectIncreaseAttackWhileDamaged.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/7c/c2d6f7c4/StatusEffectData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/85/3f099905/StatusEffectApplyXOnCardPlayed.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/ad/2b70f58e/MonoBehaviourCacheTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/ad/2b70f58e/MonoBehaviourCacheTransform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/c0/2717f325/StatusEffect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/e1/0a348e5d/Entity.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/f6/e242a709/StatusEffectApplyX.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/05/df137095/WildFrostAPIMod.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/66/051c5396/StatusEffectAdder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/05/df137095/WildFrostAPIMod.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/66/051c5396/StatusEffectAdder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/9f/629248ff/CardAdder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dee2efdd378748dfa129a6c339ff9b6815c00/34/635e9aff/StatusEffectAdder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
@@ -105,6 +99,8 @@
       <workItem from="1682843559525" duration="3983000" />
       <workItem from="1683301200543" duration="2340000" />
       <workItem from="1683798970137" duration="4521000" />
+      <workItem from="1684830477481" duration="1811000" />
+      <workItem from="1684833478473" duration="142000" />
     </task>
     <task id="LOCAL-00001" summary="Github push cause i forgor yesterday qwq">
       <created>1682700270500</created>
@@ -134,7 +130,28 @@
       <option name="project" value="LOCAL" />
       <updated>1683303543495</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated to bepinex">
+      <created>1684830655455</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1684830655455</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added the dependency attribute">
+      <created>1684830681143</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1684830681143</updated>
+    </task>
+    <task id="LOCAL-00007" summary="build files">
+      <created>1684830754574</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684830754574</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +177,9 @@
     <MESSAGE value="small fix" />
     <MESSAGE value="Updated stuff" />
     <MESSAGE value="added jolito and the card art from the cardpack" />
-    <option name="LAST_COMMIT_MESSAGE" value="added jolito and the card art from the cardpack" />
+    <MESSAGE value="Updated to bepinex" />
+    <MESSAGE value="added the dependency attribute" />
+    <MESSAGE value="build files" />
+    <option name="LAST_COMMIT_MESSAGE" value="build files" />
   </component>
 </project>
