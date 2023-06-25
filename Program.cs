@@ -11,30 +11,29 @@ public class WildFrostCardPackMod : BasePlugin
     {
        CardAdder.OnAskForAddingCards+= delegate(int i)
        {
-           CardAdder.CreateCardData("ExampleMod", "ExampleCard").SetStats(1, 1, 3).SetIsUnit().SetCanPlay(CardAdder.CanPlay.CanPlayOnBoard)
+           CardAdder.CreateCardData("ExampleMod", "ExampleCard").SetTitle("Example card").SetStats(1, 1, 3).SetIsUnit().SetCanPlay(CardAdder.CanPlay.CanPlayOnBoard)
                .SetAttackEffects(CardAdder.VanillaStatusEffects.Demonize.StatusEffectStack(1)).RegisterCardInApi();
        };
-       //Isnt a actually working effect but u get the hang of it
-       var newCustomEffect =
-           StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXEveryTurn>("ExampleMod", "ExampleEffect").SetText("Apply <keyword=haze> every turn to opposing unit");
+       /// QWQ idk why but this way it crashes sometimes idk whats wrong with that, but usually it shouldnt crash i believe
+       StatusEffectData data=null;
        StatusEffectAdder.OnAskForAddingStatusEffects+= delegate(int i)
        {
-           newCustomEffect = newCustomEffect.ModifyFields(
+           data=
+               StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXEveryTurn>("ExampleMod", "ExampleEffect").SetText("Apply <keyword=haze> every turn to opposing unit").ModifyFields(
                delegate(StatusEffectApplyXEveryTurn turn)
                {
                    turn.applyToFlags = StatusEffectApplyX.ApplyToFlags.FrontEnemy;
                    turn.effectToApply = CardAdder.VanillaStatusEffects.Haze.StatusEffectData();
                    return turn;
-               });
-           newCustomEffect.RegisterStatusEffectInApi();
+               }).RegisterStatusEffectInApi();
        };
        CardAdder.OnAskForAddingCards+= delegate(int i)
        {
            // OR  CardAdder.CreateCardData("ExampleMod", "ExampleCardWithEffectGotBeforeRegistration").SetStats(1, 1, 3)
            //                    .SetAttackEffects( "ExampleMod.ExampleEffect". StatusEffectStack(1)).RegisterCardInApi();
            // BUT it might fail, so this way its safer to get the effects u made yourself :3
-           CardAdder.CreateCardData("ExampleMod", "ExampleCardWithEffectGotBeforeRegistration").SetIsUnit().SetCanPlay(CardAdder.CanPlay.CanPlayOnBoard).SetStats(1, 1, 3)
-               .SetAttackEffects(new CardData.StatusEffectStacks(newCustomEffect,1)).RegisterCardInApi();
+           CardAdder.CreateCardData("ExampleMod", "ExampleCardWithEffectGotBeforeRegistration").SetTitle("Example Card 2").SetIsUnit().SetCanPlay(CardAdder.CanPlay.CanPlayOnBoard).SetStats(1, 1, 3)
+               .SetStartWithEffects(new CardData.StatusEffectStacks(data,1)).RegisterCardInApi();
        };
         
     }
