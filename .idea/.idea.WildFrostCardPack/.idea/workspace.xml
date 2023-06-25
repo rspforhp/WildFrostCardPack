@@ -4,16 +4,12 @@
     <projectFile>WildFrostCardPack.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a729024-73a7-4453-a6b8-ccc91011d6cd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WildFrostCardPack/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WildFrostCardPack/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="0a729024-73a7-4453-a6b8-ccc91011d6cd" name="Changes" comment="Updated some libs, and just updated the code to be less clustered and more explanatory">
       <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/ref/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/WildFrostCardPack.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/refint/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/refint/WildFrostCardPack.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +23,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/29/9514de5d/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/78/412ffc54/ScriptableObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/137fcedc30ca43ce8ea80966e669d542310a00/e4/05e075a9/Behaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/51f561193f77414a8824bff112df055a18800/1b/19466812/CardAdder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6f5e4ff5bbd94258ab8bd773251f8e6c30800/d8/f6352feb/ClassInjector.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/56/823db498/StatusEffectIncreaseAttackWhileDamaged.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/7c/c2d6f7c4/StatusEffectData.cs" root0="SKIP_HIGHLIGHTING" />
@@ -39,6 +36,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/66/051c5396/StatusEffectAdder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/9f/629248ff/CardAdder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dee2efdd378748dfa129a6c339ff9b6815c00/34/635e9aff/StatusEffectAdder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/MoreSeriousCppProjects/csharp/WildFrostCardPack/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -111,7 +109,7 @@
       <workItem from="1684833478473" duration="142000" />
       <workItem from="1686062379835" duration="850000" />
       <workItem from="1686416554839" duration="19000" />
-      <workItem from="1687710726305" duration="1099000" />
+      <workItem from="1687710726305" duration="1444000" />
     </task>
     <task id="LOCAL-00001" summary="Github push cause i forgor yesterday qwq">
       <created>1682700270500</created>
@@ -169,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686062538290</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Updated some libs, and just updated the code to be less clustered and more explanatory">
+      <created>1687711996722</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1687711996722</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,6 +204,7 @@
     <MESSAGE value="added the dependency attribute" />
     <MESSAGE value="build files" />
     <MESSAGE value="port to new version" />
-    <option name="LAST_COMMIT_MESSAGE" value="port to new version" />
+    <MESSAGE value="Updated some libs, and just updated the code to be less clustered and more explanatory" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated some libs, and just updated the code to be less clustered and more explanatory" />
   </component>
 </project>

@@ -11,9 +11,10 @@ public class WildFrostCardPackMod : BasePlugin
     {
        CardAdder.OnAskForAddingCards+= delegate(int i)
        {
-           CardAdder.CreateCardData("ExampleMod", "ExampleCard").SetStats(1, 1, 3)
+           CardAdder.CreateCardData("ExampleMod", "ExampleCard").SetStats(1, 1, 3).SetIsUnit().SetCanPlay(CardAdder.CanPlay.CanPlayOnBoard)
                .SetAttackEffects(CardAdder.VanillaStatusEffects.Demonize.StatusEffectStack(1)).RegisterCardInApi();
        };
+       //Isnt a actually working effect but u get the hang of it
        var newCustomEffect =
            StatusEffectAdder.CreateStatusEffectData<StatusEffectApplyXEveryTurn>("ExampleMod", "ExampleEffect").SetText("Apply <keyword=haze> every turn to opposing unit");
        StatusEffectAdder.OnAskForAddingStatusEffects+= delegate(int i)
@@ -32,7 +33,7 @@ public class WildFrostCardPackMod : BasePlugin
            // OR  CardAdder.CreateCardData("ExampleMod", "ExampleCardWithEffectGotBeforeRegistration").SetStats(1, 1, 3)
            //                    .SetAttackEffects( "ExampleMod.ExampleEffect". StatusEffectStack(1)).RegisterCardInApi();
            // BUT it might fail, so this way its safer to get the effects u made yourself :3
-           CardAdder.CreateCardData("ExampleMod", "ExampleCardWithEffectGotBeforeRegistration").SetStats(1, 1, 3)
+           CardAdder.CreateCardData("ExampleMod", "ExampleCardWithEffectGotBeforeRegistration").SetIsUnit().SetCanPlay(CardAdder.CanPlay.CanPlayOnBoard).SetStats(1, 1, 3)
                .SetAttackEffects(new CardData.StatusEffectStacks(newCustomEffect,1)).RegisterCardInApi();
        };
         
