@@ -6,6 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="0a729024-73a7-4453-a6b8-ccc91011d6cd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WildFrostCardPack/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WildFrostCardPack/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net6.0/WildFrostCardPack.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/WildFrostCardPack.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/ref/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/ref/WildFrostCardPack.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net6.0/refint/WildFrostCardPack.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net6.0/refint/WildFrostCardPack.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +37,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/73bd5b27af994cd1865ad54ef1c86c566dfc00/f6/e242a709/StatusEffectApplyX.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/05/df137095/WildFrostAPIMod.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/66/051c5396/StatusEffectAdder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/9f/629248ff/CardAdder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0c557b4e671448e80c0952f870e244f15e00/9f/629248ff/CardAdder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dee2efdd378748dfa129a6c339ff9b6815c00/34/635e9aff/StatusEffectAdder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -101,6 +109,9 @@
       <workItem from="1683798970137" duration="4521000" />
       <workItem from="1684830477481" duration="1811000" />
       <workItem from="1684833478473" duration="142000" />
+      <workItem from="1686062379835" duration="850000" />
+      <workItem from="1686416554839" duration="19000" />
+      <workItem from="1687710726305" duration="1099000" />
     </task>
     <task id="LOCAL-00001" summary="Github push cause i forgor yesterday qwq">
       <created>1682700270500</created>
@@ -151,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684830754574</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="port to new version">
+      <created>1686062538290</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686062538290</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +198,7 @@
     <MESSAGE value="Updated to bepinex" />
     <MESSAGE value="added the dependency attribute" />
     <MESSAGE value="build files" />
-    <option name="LAST_COMMIT_MESSAGE" value="build files" />
+    <MESSAGE value="port to new version" />
+    <option name="LAST_COMMIT_MESSAGE" value="port to new version" />
   </component>
 </project>
